@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame, sys, random
 from pygame.locals import *
 
 BLACK = (0,   0,   0  )
@@ -18,20 +18,28 @@ textures =   {
                COAL  : pygame.image.load('coal.png')
             }
 
-tilemap = [
-            [GRASS, COAL,  DIRT ],
-            [WATER, WATER, GRASS],
-            [COAL,  GRASS, WATER],
-            [DIRT,  GRASS, COAL ],
-            [GRASS, WATER, DIRT ]
-          ]
+TILESIZE  = 20
+MAPWIDTH  = 30
+MAPHEIGHT = 20
 
-TILESIZE  = 40
-MAPWIDTH  = 3
-MAPHEIGHT = 5
+resources = [DIRT,GRASS,WATER,COAL]
+tilemap = [ [DIRT for w in range(MAPWIDTH)] for h in range(MAPHEIGHT) ]
 
 pygame.init()
 DISPLAYSURF = pygame.display.set_mode((MAPWIDTH*TILESIZE,MAPHEIGHT*TILESIZE))
+
+for rw in range(MAPHEIGHT):
+  for cl in range(MAPWIDTH):
+    randomNumber = random.randint(0,15)
+    if randomNumber == 0:
+      tile = COAL
+    elif randomNumber == 1 or randomNumber == 2:
+      tile = WATER
+    elif randomNumber >= 3 and randomNumber <= 7:
+      tile = GRASS
+    else:
+      tile = DIRT
+    tilemap[rw][cl] = tile
 
 while True:
   
