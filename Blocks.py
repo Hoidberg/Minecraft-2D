@@ -33,7 +33,7 @@ MAPHEIGHT = 5
 pygame.init()
 DISPLAYSURF = pygame.display.set_mode((MAPWIDTH*TILESIZE,MAPHEIGHT*TILESIZE))
 
-while true:
+while True:
   
   for event in pygame.event.get():
     if event.type == QUIT:
