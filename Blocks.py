@@ -11,11 +11,11 @@ GRASS = 1
 WATER = 2
 COAL  = 3
 
-colours =   {
-               DIRT  : BROWN,
-               GRASS : GREEN,
-               WATER : BLUE,
-               COAL  : BLACK
+textures =   {
+               DIRT  : pygame.image.load('dirt.png'),
+               GRASS : pygame.image.load('grass.png'),
+               WATER : pygame.image.load('water.png'),
+               COAL  : pygame.image.load('coal.png')
             }
 
 tilemap = [
@@ -42,6 +42,6 @@ while True:
       
   for row in range(MAPHEIGHT):
     for column in range(MAPWIDTH):
-      pygame.draw.rect(DISPLAYSURF, colours[tilemap[row][column]], (column*TILESIZE,row*TILESIZE,TILESIZE,TILESIZE))
+      DISPLAYSURF.blit(textures[tilemap[row][column]], (column*TILESIZE,row*TILESIZE))
       
   pygame.display.update()
